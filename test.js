@@ -3,6 +3,7 @@ const {groups} =require('./groups.js'); //Solution B
 const assert = require('assert')
 const {Prodcuts, Computers} = require('./dataset');
 
+//Sollution A
 describe("Solution A: Tree",()=>{
 
     const products = tree(Prodcuts); 
@@ -56,7 +57,7 @@ describe("Solution A: Tree",()=>{
 
 });
 
-
+//Sollution B
 describe("Solution B: Groups",()=>{
 
     const products = groups(Prodcuts); 
