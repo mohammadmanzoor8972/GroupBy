@@ -1,48 +1,112 @@
-const operations = require('./tree.js')
+const {tree} = require('./tree.js'); //Solution A
+const {groups} =require('./groups.js'); //Solution B
 const assert = require('assert')
+const {Prodcuts, Computers} = require('./dataset');
 
-const Prodcuts = [
-	{ "group": "G1", "subgroup": "S1", "item": "I1", "cost": 10 },
-	{ "group": "G1", "subgroup": "S2", "item": "I2", "cost": 11 },
-	{ "group": "G1", "subgroup": "S2", "item": "I3", "cost": 12 },
-	{ "group": "G2", "subgroup": "S1", "item": "I4", "cost": 20 }
-]
+describe("Solution A: Tree",()=>{
 
-const Computers = [
-	{ "group": "Software", "subgroup": "Wordprocess", "item": "Microsoft Word", "cost": 1230 },
-    { "group": "Software", "subgroup": "Wordprocess", "item": "Notepad++", "cost": 4330 },
-    { "group": "Hardware", "subgroup": "Hardisk", "item": "Segate", "cost":5500 },
-	{ "group": "Hardware", "subgroup": "Monitor", "item": "Samsung", "cost": 9026 },
-	{ "group": "Software", "subgroup": "Programming", "item": "Javascript", "cost": 234 },
-	{ "group": "Software", "subgroup": "Programming", "item": "C#", "cost": 434 }
-]
+    const products = tree(Prodcuts); 
+    const computers = tree(Computers);
 
-const Accessories = [
-	{ "group": "Gents", "subgroup": "Shoes", "item": "Sneackers", "cost": 1800 },
-	{ "group": "Ladies", "subgroup": "Shoes", "item": "Sandle", "cost": 2200 },
-]
+    describe("Data Set A : Prodcuts",()=>{
+        it('Product - must be an Array', () => {
+            assert.equal(Array.isArray(products), true);
+        })
 
-it('Product Set A - must be an Array', () => {
- let products = operations.tree(Prodcuts);    
-  assert.equal(Array.isArray(products), true);
-})
+        it('Product - Length must be 2', () => {
+            assert.equal(products.length, 2);
+        })
+
+        it('Product - 1st Product item_count must be 3', () => {
+            assert.equal(products[0].item_count, 3);
+        })
+
+        it('Product - 1st Product subgroups must be an Array', () => {
+            assert.equal(Array.isArray(products[0].subgroups), true);
+        })
+
+        it('Product - 1st Product subgroups must be length 2', () => {
+            assert.equal(products[0].subgroups.length, 2);
+        })
+    });
+
+    describe("Data Set B : Computers",()=>{
+
+    
+        it('Computers - must be an Array', () => {
+            assert.equal(Array.isArray(computers), true);
+        })
+
+        it('Computers - Length must be 2', () => {
+            assert.equal(computers.length, 2);
+        })
+
+        it('Computers - 1st Product item_count must be 2', () => {
+            assert.equal(computers[0].item_count, 4);
+        })
+
+        it('Computers - 1st Product subgroups must be an Array', () => {
+            assert.equal(Array.isArray(computers[0].subgroups), true);
+        })
+
+        it('Computers - 1st Product subgroups must be length 2', () => {
+            assert.equal(computers[0].subgroups.length, 2);
+        })
+    });
+
+});
 
 
-it('Product Set A - Length must be 2', () => {
-    assert.equal(operations.tree(Prodcuts).length, 2);
-})
+describe("Solution B: Groups",()=>{
 
-it('Product Set A - 1st Product item_count must be 3', () => {
-    let products = operations.tree(Prodcuts); 
-    assert.equal(products[0].item_count, 3);
-})
+    const products = groups(Prodcuts); 
+    const computers = groups(Computers);
 
-it('Product Set A - 1st Product subgroups must be an Array', () => {
-    let products = operations.tree(Prodcuts); 
-    assert.equal(Array.isArray(products[0].subgroups), true);
-})
+    describe("Data Set A : Prodcuts",()=>{
+        it('Product - must be an Array', () => {
+            assert.equal(Array.isArray(products), true);
+        })
 
-it('Product Set A - 1st Product subgroups must be length 2', () => {
-    let products = operations.tree(Prodcuts); 
-    assert.equal(products[0].subgroups.length, 2);
-})
+        it('Product - Length must be 2', () => {
+            assert.equal(products.length, 2);
+        })
+
+        it('Product - 1st Product item_count must be 3', () => {
+            assert.equal(products[0].item_count, 3);
+        })
+
+        it('Product - 1st Product subgroups must be an Array', () => {
+            assert.equal(Array.isArray(products[0].subgroups), true);
+        })
+
+        it('Product - 1st Product subgroups must be length 2', () => {
+            assert.equal(products[0].subgroups.length, 2);
+        })
+    });
+
+    describe("Data Set B : Computers",()=>{
+
+    
+        it('Computers - must be an Array', () => {
+            assert.equal(Array.isArray(computers), true);
+        })
+
+        it('Computers - Length must be 2', () => {
+            assert.equal(computers.length, 2);
+        })
+
+        it('Computers - 1st Product item_count must be 2', () => {
+            assert.equal(computers[0].item_count, 4);
+        })
+
+        it('Computers - 1st Product subgroups must be an Array', () => {
+            assert.equal(Array.isArray(computers[0].subgroups), true);
+        })
+
+        it('Computers - 1st Product subgroups must be length 2', () => {
+            assert.equal(computers[0].subgroups.length, 2);
+        })
+    });
+
+});
+
