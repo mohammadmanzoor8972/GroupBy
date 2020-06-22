@@ -1,113 +1,114 @@
 const {tree} = require('./tree.js'); //Solution A
 const {groups} =require('./groups.js'); //Solution B
 const assert = require('assert')
-const {Prodcuts, Computers} = require('./dataset');
+const {Prodcuts_setA, Prodcuts_setB} = require('./dataset');
 
 //Sollution A
 describe("Solution A: Tree",()=>{
 
-    const products = tree(Prodcuts); 
-    const computers = tree(Computers);
+    describe("Data Set A : Prodcuts Data Set",()=>{
+        const products = tree(Prodcuts_setA); 
 
-    describe("Data Set A : Prodcuts",()=>{
-        it('Product - must be an Array', () => {
-            assert.equal(Array.isArray(products), true);
+        it('Should have an Array', () => {
+            assert.equal(Array.isArray(Prodcuts_setA), true);
         })
 
-        it('Product - Length must be 2', () => {
+        it('Should have total 2 Groups', () => {
             assert.equal(products.length, 2);
         })
 
-        it('Product - 1st Product item_count must be 3', () => {
+        it('Should have total 2 Subgroups of 1st Groups', () => {
+            assert.equal(products[0].subgroups.length, 2);
+        })
+
+        it('Should have total 3 Items of 1st Groups', () => {
             assert.equal(products[0].item_count, 3);
         })
 
-        it('Product - 1st Product subgroups must be an Array', () => {
-            assert.equal(Array.isArray(products[0].subgroups), true);
+        it('Should have group name as G1 of 1st Groups', () => {
+            assert.equal(products[0].group, "G1");
         })
-
-        it('Product - 1st Product subgroups must be length 2', () => {
-            assert.equal(products[0].subgroups.length, 2);
-        })
-    });
-
-    describe("Data Set B : Computers",()=>{
-
     
-        it('Computers - must be an Array', () => {
-            assert.equal(Array.isArray(computers), true);
-        })
-
-        it('Computers - Length must be 2', () => {
-            assert.equal(computers.length, 2);
-        })
-
-        it('Computers - 1st Product item_count must be 2', () => {
-            assert.equal(computers[0].item_count, 4);
-        })
-
-        it('Computers - 1st Product subgroups must be an Array', () => {
-            assert.equal(Array.isArray(computers[0].subgroups), true);
-        })
-
-        it('Computers - 1st Product subgroups must be length 2', () => {
-            assert.equal(computers[0].subgroups.length, 2);
-        })
     });
 
+    describe("Data Set B : Prodcuts Data Set",()=>{
+        const products = tree(Prodcuts_setB); 
+        
+        it('Should have an Array', () => {
+            assert.equal(Array.isArray(Prodcuts_setB), true);
+        })
+
+        it('Should have total 1 Groups', () => {
+            assert.equal(products.length, 1);
+        })
+
+        it('Should have total 1 Subgroups of 1st Groups', () => {
+            assert.equal(products[0].subgroups.length, 1);
+        })
+
+        it('Should have total 1 Items of 1st Groups', () => {
+            assert.equal(products[0].item_count, 2);
+        })
+
+        it('Should have group name as G2 of 1st Groups', () => {
+            assert.equal(products[0].group, "G2");
+        })
+    
+    });
 });
 
-//Sollution B
-describe("Solution B: Groups",()=>{
 
-    const products = groups(Prodcuts); 
-    const computers = groups(Computers);
+//Solutions B
+describe("Solution B: GroupsBy",()=>{
 
-    describe("Data Set A : Prodcuts",()=>{
-        it('Product - must be an Array', () => {
-            assert.equal(Array.isArray(products), true);
+    describe("Data Set A : Prodcuts Data Set",()=>{
+        const products = groups(Prodcuts_setA); 
+
+        it('Should have an Array', () => {
+            assert.equal(Array.isArray(Prodcuts_setA), true);
         })
 
-        it('Product - Length must be 2', () => {
+        it('Should have total 2 Groups', () => {
             assert.equal(products.length, 2);
         })
 
-        it('Product - 1st Product item_count must be 3', () => {
+        it('Should have total 2 Subgroups of 1st Groups', () => {
+            assert.equal(products[0].subgroups.length, 2);
+        })
+
+        it('Should have total 3 Items of 1st Groups', () => {
             assert.equal(products[0].item_count, 3);
         })
 
-        it('Product - 1st Product subgroups must be an Array', () => {
-            assert.equal(Array.isArray(products[0].subgroups), true);
+        it('Should have group name as G1 of 1st Groups', () => {
+            assert.equal(products[0].group, "G1");
         })
-
-        it('Product - 1st Product subgroups must be length 2', () => {
-            assert.equal(products[0].subgroups.length, 2);
-        })
-    });
-
-    describe("Data Set B : Computers",()=>{
-
     
-        it('Computers - must be an Array', () => {
-            assert.equal(Array.isArray(computers), true);
-        })
-
-        it('Computers - Length must be 2', () => {
-            assert.equal(computers.length, 2);
-        })
-
-        it('Computers - 1st Product item_count must be 2', () => {
-            assert.equal(computers[0].item_count, 4);
-        })
-
-        it('Computers - 1st Product subgroups must be an Array', () => {
-            assert.equal(Array.isArray(computers[0].subgroups), true);
-        })
-
-        it('Computers - 1st Product subgroups must be length 2', () => {
-            assert.equal(computers[0].subgroups.length, 2);
-        })
     });
 
+    describe("Data Set B : Prodcuts Data Set",()=>{
+        const products = groups(Prodcuts_setB); 
+        
+        it('Should have an Array', () => {
+            assert.equal(Array.isArray(Prodcuts_setB), true);
+        })
+
+        it('Should have total 1 Groups', () => {
+            assert.equal(products.length, 1);
+        })
+
+        it('Should have total 1 Subgroups of 1st Groups', () => {
+            assert.equal(products[0].subgroups.length, 1);
+        })
+
+        it('Should have total 1 Items of 1st Groups', () => {
+            assert.equal(products[0].item_count, 2);
+        })
+
+        it('Should have group name as G2 of 1st Groups', () => {
+            assert.equal(products[0].group, "G2");
+        })
+    
+    });
 });
 
